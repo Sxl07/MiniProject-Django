@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  /* Estilos CSS */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  h1 {
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    margin-left: 10px;
+  }
+
+  .btn-secondary:hover {
+    background-color: #545b62;
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+  <h1>Bienvenido a MicroBilling</h1>
+  <a href="{% url 'register' %}" class="btn">Registrarse</a>
+  <a href="{% url 'login' %}" class="btn btn-secondary">Iniciar sesión</a>
+</div>
+
+</body>
+</html>

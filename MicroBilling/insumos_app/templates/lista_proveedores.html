@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Proveedores</title>
+    <!-- Agregar Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos para el dashboard lateral */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #007bff;
+            padding-top: 20px;
+        }
+        .sidebar img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+}
+
+        .sidebar a {
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos para el contenido principal */
+        .main-content {
+            margin-left: 250px; /* Ajustar según el ancho de la barra lateral */
+            padding: 20px;
+        }
+
+        .table {
+            width: 100%; /* Modificado para ocupar todo el ancho del contenido */
+        }
+
+        .table thead {
+            background-color: #f0f0f0;
+        }
+        header{
+        background-color: #007bff;
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0 5px 0;
+    }
+    .logout_button{
+        transform: translateX(-25%);
+    }
+    .title{
+        transform: translateX(70%);
+        font-weight: bold;
+        color: #FFF;
+        font-size: 4rem;
+    }.sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #444655;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="title">MicroBilling</h1>
+        <div class="logout_button">
+            <a href="{% url 'logout' %}" class="btn btn-danger btn-lg">Cerrar Sesión</a>
+        </div>
+    </header>
+<!-- Dashboard lateral -->
+<div class="sidebar">
+    <center><img src="../../media/logo.png" width="75%"></center>
+    <a href="{% url 'lista_pedidos' %}">🚚 Lista de Pedidos</a>
+    <a href="{% url 'lista_insumos' %}">📦 Lista de Insumos</a>
+    <a href="{% url 'lista_proveedores' %}">🏭 Lista de Proveedores</a>
+</div>
+
+<!-- Contenido principal -->
+<div class="main-content">
+    <div class="container">
+        <h1>Lista de Proveedores</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proveedor in proveedores %}
+                <tr>
+                    <td>{{ proveedor.nombre }}</td>
+                    <td>{{ proveedor.direccion }}</td>
+                    <td>{{ proveedor.telefono }}</td>
+                    <td>
+                        <a href="{% url 'editar_proveedor' proveedor.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'eliminar_proveedor' proveedor.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="cbutton-right"> <!-- Div para los botones -->
+                <a href="{% url 'crear_proveedor' %}" class="btn btn-primary">Crear Proveedor</a>
+    </div>
+</div>
+
+<!-- Agregar Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
