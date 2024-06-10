@@ -9,7 +9,6 @@ from .forms import ProveedorForm
 from .models import Pedido
 from .forms import PedidoForm
 
-
 @login_required
 def lista_insumos(request):
     insumos = Insumo.objects.all()
@@ -47,7 +46,6 @@ def eliminar_insumo(request, insumo_id):
         return redirect('lista_insumos')
     return render(request, 'confirmar_eliminacion.html', {'insumo': insumo})
 
-
 @login_required
 def lista_proveedores(request):
     proveedores = Proveedor.objects.all()
@@ -73,6 +71,7 @@ def editar_proveedor(request, proveedor_id):
     else:
         form = ProveedorForm(instance=proveedor)
     return render(request, 'editar_proveedor.html', {'form': form, 'proveedor': proveedor})
+
 @login_required
 def eliminar_proveedor(request, proveedor_id):
     proveedor = get_object_or_404(Proveedor, pk=proveedor_id)

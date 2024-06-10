@@ -13,7 +13,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
-            return redirect('accounts/login.html')  # Reemplaza 'home' con la URL a la que quieres redirigir después de registrarse
+            return redirect('login')  # Reemplaza 'home' con la URL a la que quieres redirigir después de registrarse
     else:
         form = UserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
